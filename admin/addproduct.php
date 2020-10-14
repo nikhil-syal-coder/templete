@@ -1,3 +1,40 @@
+<?php 
+include 'config.php';
+?>
+
+
+<?php 
+if (isset($_POST['submit'])) {
+    $name=isset($_POST['name'])?$_POST['name']:'';
+    $price=isset($_POST['price'])?$_POST['price']:'';
+    $image= $_FILES['file']['name'];
+    $cat=isset($_POST['dropdown'])?$_POST['dropdown']:'';
+    $check=isset($_POST['cloth'])?$_POST['cloth']:'';
+    $desc=isset($_POST['field'])?$_POST['field']:'';
+    $check2=serialize($check);
+    
+    $sql=" INSERT INTO products ( name, price, checkbox, long_description, category_id, image)
+	 VALUES ( '".$name."', '".$price."','".$check2."', '".$desc."', '".$cat."', '".$image."')";
+	
+    if ($conn->query($sql)===true) {
+        echo "New record created successfully";
+          header("Location: index.php");
+
+
+}
+else {
+	
+		echo "Error: " . $sql . "<br>" . $conn->error;
+		header("Location: a.php");
+  }
+  $conn->close();
+}
+
+?>
+
+
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -17,8 +54,8 @@
 	<body><div id="body-wrapper"> <!-- Wrapper for the radial gradient background -->
 		
 		<?php 
-		include 'sidebar.php';
-		include 'header.php';
+		 include 'sidebar.php';
+		 include 'header.php';
 
 		
 		?>
@@ -28,14 +65,14 @@
 			<div class="clear"></div> <!-- End .clear -->
 			
 			<div class="content-box"><!-- Start Content Box -->
-				
+          
 				<div class="content-box-header">
-					
+                    
 					<h3>Content box</h3>
 					
 					<ul class="content-box-tabs">
-						<li><a href="#tab1" class="default-tab">Manage</a></li> <!-- href must be unique and match the id of target div -->
-						<li><a href="#tab2">Add</a></li>
+						<li><a href="#tab1" >Manage</a></li> <!-- href must be unique and match the id of target div -->
+						<li><a href="#tab2" class="default-tab">Add</a></li>
 					</ul>
 					
 					<div class="clear"></div>
@@ -44,7 +81,7 @@
 				
 				<div class="content-box-content">
 					
-					<div class="tab-content default-tab" id="tab1"> <!-- This is the target div. id must match the href of this div's tab -->
+					<div class="tab-content" id="tab1"> <!-- This is the target div. id must match the href of this div's tab -->
 						
 						<div class="notification attention png_bg">
 							<a href="#" class="close"><img src="resources/images/icons/cross_grey_small.png" title="Close this notification" alt="close" /></a>
@@ -210,56 +247,59 @@
 						
 					</div> <!-- End #tab1 -->
 					
-					<div class="tab-content" id="tab2">
+					<div class="tab-content default-tab" id="tab2">
 					
-						<form action="#" method="post">
+						<form action="" method="post"  enctype="multipart/form-data">
 							
 							<fieldset> <!-- Set class to "column-left" or "column-right" on fieldsets to divide the form into columns -->
 								
 								<p>
-									<label>Small form input</label>
-										<input class="text-input small-input" type="text" id="small-input" name="small-input" /> <span class="input-notification success png_bg">Successful message</span> <!-- Classes for input-notification: success, error, information, attention -->
-										<br /><small>A small description of the field</small>
+									<label>Name</label>
+										<input class="text-input small-input" type="text" id="small-input" name="name" />  <!-- Classes for input-notification: success, error, information, attention -->
+										<br />
 								</p>
 								
 								<p>
-									<label>Medium form input</label>
-									<input class="text-input medium-input datepicker" type="text" id="medium-input" name="medium-input" /> <span class="input-notification error png_bg">Error message</span>
+									<label>Price</label>
+									<input class="text-input small-input " type="text" id="medium-input" name="price" />
+								</p>
+								<p>
+								<label>Image</label>
+									<input type="file" id="file" name="file" >
+
+
+
+								</p>
+								
+								
+								<p>
+	<label>Category</label>              
+	<select name="dropdown" class="small-input">
+		<option value="men">Men</option>
+		<option value="women">Women</option>
+		<option value="kids">Kids</option>
+		<option value="Electronics">Electronics</option>
+		<option value="sports">Sports</option>
+	</select> 
+</p>
+
+<p>
+	<label>Tags</label>
+	<input type="checkbox" name="cloth[]" value="fashion" /> Fashion 
+	<input type="checkbox" name="cloth[]" value="ecommerce" /> Ecommerce
+	<input type="checkbox" value="shop" name="cloth[]"/> Shop
+	<input type="checkbox" value="handbag"name="cloth[]" /> Hand Bag
+	<input type="checkbox" value="laptop" name="cloth[]"/> Laptop
+	<input type="checkbox" value="headphone" name="cloth[]"/> Headphone
+</p>
+								
+								<p>
+									<label>Description</label>
+									<textarea class="text-input textarea wysiwyg" id="textarea" name="field" cols="79" rows="15"></textarea>
 								</p>
 								
 								<p>
-									<label>Large form input</label>
-									<input class="text-input large-input" type="text" id="large-input" name="large-input" />
-								</p>
-								
-								<p>
-									<label>Checkboxes</label>
-									<input type="checkbox" name="checkbox1" /> This is a checkbox <input type="checkbox" name="checkbox2" /> And this is another checkbox
-								</p>
-								
-								<p>
-									<label>Radio buttons</label>
-									<input type="radio" name="radio1" /> This is a radio button<br />
-									<input type="radio" name="radio2" /> This is another radio button
-								</p>
-								
-								<p>
-									<label>This is a drop down list</label>              
-									<select name="dropdown" class="small-input">
-										<option value="option1">Option 1</option>
-										<option value="option2">Option 2</option>
-										<option value="option3">Option 3</option>
-										<option value="option4">Option 4</option>
-									</select> 
-								</p>
-								
-								<p>
-									<label>Textarea with WYSIWYG</label>
-									<textarea class="text-input textarea wysiwyg" id="textarea" name="textfield" cols="79" rows="15"></textarea>
-								</p>
-								
-								<p>
-									<input class="button" type="submit" value="Submit" />
+									<input class="button" type="submit" name="submit" value="Submit" />
 								</p>
 								
 							</fieldset>
@@ -359,5 +399,7 @@
 			?><!-- End #footer -->
 			
 		</div> <!-- End #main-content -->
-	</div></body>
+	</div>
+	
+</body>
 </html>

@@ -15,7 +15,7 @@
 
          $filename=basename($_SERVER['REQUEST_URI']);
        
-         $products=array('products.php','tags.php','addp.php','catagory.php');
+         $products=array('products.php','tags.php','addproduct.php','catagory.php');
         
     ?>
  <!-- Sidebar with logo and menu -->
@@ -45,7 +45,8 @@
 					Products
 					</a>
 					<ul>
-						<li><a <?php if($filename=='addp.php'):?>class="current"<?php endif;  ?> href="addp.php">Add Product</a></li>
+						
+					<li><a <?php if($filename=='addproduct.php'):?>class="current"<?php endif;  ?> href="addproduct.php">Add Product</a></li>
 						<li><a <?php if($filename=='products.php'):?>class="current"<?php endif;  ?> href="products.php">Manage Product</a></li> <!-- Add class "current" to sub menu items also -->
 						<li><a <?php if($filename=='catagory.php'):?>class="current"<?php endif;  ?>href="catagory.php">Manage Catagories</a></li>
 						<li><a <?php if($filename=='tags.php'):?>class="current"<?php endif;  ?>href="tags.php">Manage Tags</a></li>
