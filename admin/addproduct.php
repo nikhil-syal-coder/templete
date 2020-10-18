@@ -8,13 +8,15 @@ if (isset($_POST['submit'])) {
     $name=isset($_POST['name'])?$_POST['name']:'';
     $price=isset($_POST['price'])?$_POST['price']:'';
     $image= $_FILES['file']['name'];
-    $cat=isset($_POST['dropdown'])?$_POST['dropdown']:'';
+	$cat=isset($_POST['dropdown'])?$_POST['dropdown']:'';
+	$color=isset($_POST['color'])?$_POST['color']:'';
     $check=isset($_POST['cloth'])?$_POST['cloth']:'';
     $desc=isset($_POST['field'])?$_POST['field']:'';
-    $check2=serialize($check);
+	$check2=serialize($check);
+	
     
-    $sql=" INSERT INTO products ( name, price, checkbox, long_description, category_id, image)
-	 VALUES ( '".$name."', '".$price."','".$check2."', '".$desc."', '".$cat."', '".$image."')";
+    $sql=" INSERT INTO products ( name, price, checkbox, long_description, category_id, image,color)
+	 VALUES ( '".$name."', '".$price."','".$check2."', '".$desc."', '".$cat."', '".$image."','".$color."')";
 	
     if ($conn->query($sql)===true) {
         echo "New record created successfully";
@@ -282,6 +284,23 @@ else {
 		<option value="sports">Sports</option>
 	</select> 
 </p>
+<label>Color</label>              
+	<select name="color" class="small-input">
+		<option value="green">green</option>
+		<option value="pink">pink</option>
+		<option value="yellow">yellow</option>
+		<option value="purple">purple</option>
+		<option value="blue">blue</option>
+		<option value="orchid">orchid</option>
+		<option value="white">White</option>
+		<option value="gray">gray</option>
+		<option value="orange">orange</option>
+		<option value="black">black</option>
+		<option value="cyan">cyan</option>
+		<option value="olive">olive</option>
+		
+	</select> 
+</p>
 
 <p>
 	<label>Tags</label>
@@ -291,6 +310,7 @@ else {
 	<input type="checkbox" value="handbag"name="cloth[]" /> Hand Bag
 	<input type="checkbox" value="laptop" name="cloth[]"/> Laptop
 	<input type="checkbox" value="headphone" name="cloth[]"/> Headphone
+	<input type="checkbox" value="pendrive" name="cloth[]"/> Pen drive
 </p>
 								
 								<p>

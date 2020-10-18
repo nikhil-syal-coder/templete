@@ -245,6 +245,27 @@
 		<option value="5">Sports</option>
 	</select> 
 </p>
+<p>
+	<label>Color</label>              
+	<select name="dropdown" class="small-input">
+		<option value="1">green</option>
+		<option value="2">pink</option>
+		<option value="3">yellow</option>
+		<option value="4">purple</option>
+		<option value="5">blue</option>
+		<option value="6">orchid</option>
+		<option value="7">White</option>
+		<option value="8">gray</option>
+		<option value="9">orange</option>
+		<option value="10">black</option>
+		<option value="11">cyan</option>
+		<option value="12">olive</option>
+		
+	</select> 
+</p>
+
+
+
 
 <p>
 	<label>Tags</label>
