@@ -79,16 +79,16 @@
 require "config.php";
 ?>
 <?php 
-
+$abc='';
 if (isset($_GET['id']) ) {
 $update=$_GET['id'];
-
+$abc=$update;
 $sql1="SELECT * from products WHERE  product_id='".$update."'";
 $result=$conn->query($sql1);
 if ($result->num_rows > 0) {
     while ($row= $result->fetch_assoc()) {
+      
      
-
 
 $a='<div class="col-md-5 col-sm-5 col-xs-12">                              
 <div class="aa-product-view-slider">                                
@@ -113,7 +113,7 @@ $a='<div class="col-md-5 col-sm-5 col-xs-12">
    
 $a.=' <div class="col-md-7 col-sm-7 col-xs-12">
 <div class="aa-product-view-content">
-  <h3>' .$row['checkbox'] . '</h3>
+  <h3>' . $row['checkbox'] . '</h3>
   <div class="aa-price-block">
     <span class="aa-product-view-price">$' . $row['price'] . '</span>
     <p class="aa-product-avilability">Avilability: <span>In stock</span></p>
