@@ -2,7 +2,7 @@
 
 echo "<h2>Thank You For Shoping With Us </h2>";
 echo"<img src='thn.jpg'>";
-echo'<div><p class="aa1"> <a href="products.php" >Continue shoping</a></p></div>';
+echo'<div><p class="aa1"> <a href="product.php" >Continue shoping</a></p></div>';
 
 ?>
  <?php 
