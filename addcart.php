@@ -24,7 +24,7 @@ $sql2="INSERT INTO `ordcart` (`image`, `product`, `price`, `quantity`, `totalpri
  VALUES ('".$img."', '".$product."', '".$price."', 1, '".$price."')";
 
 if($conn->query($sql2)==true){
-  include 'product.php';
+  header('product.php');
 
 }
   else{

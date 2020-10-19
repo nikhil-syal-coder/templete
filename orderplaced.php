@@ -17,22 +17,17 @@ $result=$conn->query($sql1);
 if ($result->num_rows > 0) {
     while ($row= $result->fetch_assoc()) {
 
-
      $b=$row['image'];
      $c=$row['product'];
      $d=$row['price'];
      $e=$row['quantity'];
      $f=$row['totalprice'];
-    $sql2="INSERT INTO placedorder(image, product, price,quantity, totalprice)
+    
+    $sql2="INSERT INTO placedorder (image, product, price,quantity, totalprice)
      VALUES ( '$b', '$c', '$d', '$e', '$f')";
-     $result=$conn->query($sql2);
-     if($conn->query($sql2)==true){
-echo "hiurrr";
-     }
-else{
-    echo $conn;
-}
-    }
+     $result2=$conn->query($sql2);
+     
+  }
   }
   
 

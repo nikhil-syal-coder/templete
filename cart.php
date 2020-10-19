@@ -118,7 +118,7 @@ if ($result->num_rows > 0) {
       echo "updateee";
     }
     
-    ?>                 
+    ?>                 <tr>
                         <td colspan="6" class="aa-cart-view-bottom">
                           <div class="aa-cart-coupon">
                             <input class="aa-coupon-code" type="text" placeholder="Coupon">

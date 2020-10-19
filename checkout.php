@@ -334,7 +334,24 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
+                      <?php 
+                      include 'config.php';
+                  
+                      ?>
+                      <?php 
+                      $sql1="SELECT * from ordcart ";
+                      $result=$conn->query($sql1);
+                      if ($result->num_rows > 0) {
+                          while ($row= $result->fetch_assoc()) {
+                         $a='<tr><td>'.$row['product']. '<strong> x '.$row['quantity']. ' </strong></td>
+                              <td>$'.$row['totalprice'].'</td></tr>'; 
+                              
+                              echo $a;
+                          }
+                        }
+                      
+                      ?>
+                        <!-- <tr>
                           <td>T-Shirt <strong> x  1</strong></td>
                           <td>$150</td>
                         </tr>
@@ -345,12 +362,27 @@
                         <tr>
                           <td>Shoes <strong> x  1</strong></td>
                           <td>$350</td>
-                        </tr>
+                        </tr> -->
                       </tbody>
                       <tfoot>
                         <tr>
                           <th>Subtotal</th>
-                          <td>$750</td>
+                          <td>$<?php 
+                    $total=0;
+                     require "config.php";
+                     $sql1="SELECT * from ordcart ";
+                     $result=$conn->query($sql1);
+                     if ($result->num_rows > 0) {
+                      while ($row= $result->fetch_assoc()) {
+                        $total=$total+$row['totalprice'];
+                        
+                      }
+                      echo $total;
+                    }
+                   
+
+                     
+                     ?></td>
                         </tr>
                          <tr>
                           <th>Tax</th>
@@ -358,7 +390,23 @@
                         </tr>
                          <tr>
                           <th>Total</th>
-                          <td>$785</td>
+                          <td>$<?php 
+                    $total=0;
+                     require "config.php";
+                     $sql1="SELECT * from ordcart ";
+                     $result=$conn->query($sql1);
+                     if ($result->num_rows > 0) {
+                      while ($row= $result->fetch_assoc()) {
+                        $total=$total+$row['totalprice'];
+                        
+                      }
+                      $total=$total+35;
+                      echo $total;
+                    }
+                   
+
+                     
+                     ?></td>
                         </tr>
                       </tfoot>
                     </table>
