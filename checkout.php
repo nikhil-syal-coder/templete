@@ -391,7 +391,7 @@
                          <tr>
                           <th>Total</th>
                           <td>$<?php 
-                    $total=0;
+                     $total=0;
                      require "config.php";
                      $sql1="SELECT * from ordcart ";
                      $result=$conn->query($sql1);

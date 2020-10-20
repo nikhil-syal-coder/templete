@@ -115,7 +115,7 @@ require "config.php";
 <?php 
 
 if (isset($_POST['submit'])) {
-  echo "hurrr";
+  
     $name=isset($_POST['min'])?$_POST['min']:'';
     $price=isset($_POST['max'])?$_POST['max']:'';
     echo $name;

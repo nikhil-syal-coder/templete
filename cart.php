@@ -98,7 +98,7 @@ $result=$conn->query($sql1);
 if ($result->num_rows > 0) {
     while ($row= $result->fetch_assoc()) {
 
-      $a='<tr>
+    $a='<tr>
       <td><a class="remove" href="delete.php?id='.$row['id'].'><fa class="fa fa-close"></fa>X</a></td>
       <td><a href=update.php?id='.$row['id'].'>+</a></td>
       <td><a href="#"><img src="img2/'.$row['image'].'" alt="img"></a></td>
@@ -106,7 +106,7 @@ if ($result->num_rows > 0) {
       <td>$'.$row['price'].'</td>
       <td><input class="aa-cart-quantity" type="number" value="'.$row['quantity'].'"></td>
       <td>$'.$row['totalprice'].'</td>
-    </tr>';
+      </tr>';
     echo $a;   
     }
   }
@@ -138,18 +138,18 @@ if ($result->num_rows > 0) {
                  <tbody>
                    <tr>
                      <th>Subtotal</th>
-                     <td>$<?php 
-                    $total=0;
+               <td>$<?php 
+                     $total=0;
                      require "config.php";
                      $sql1="SELECT * from ordcart ";
                      $result=$conn->query($sql1);
                      if ($result->num_rows > 0) {
-                      while ($row= $result->fetch_assoc()) {
-                        $total=$total+$row['totalprice'];
+                           while ($row= $result->fetch_assoc()) {
+                                     $total=$total+$row['totalprice'];
                         
                       }
                       echo $total;
-                    }
+                     }
                    
 
                      
@@ -157,18 +157,19 @@ if ($result->num_rows > 0) {
                    </tr>
                    <tr>
                      <th>Total</th>
-                     <td>$<?php 
-                    $total=0;
+                  <td>$<?php 
+                     $total=0;
                      require "config.php";
                      $sql1="SELECT * from ordcart ";
                      $result=$conn->query($sql1);
                      if ($result->num_rows > 0) {
-                      while ($row= $result->fetch_assoc()) {
-                        $total=$total+$row['totalprice'];
+                           while ($row= $result->fetch_assoc()) {
+                                $total=$total+$row['totalprice'];
                         
                       }
                       echo $total;
-                    }?></td>
+                    }
+                  ?></td>
                    </tr>
                  </tbody>
                </table>
