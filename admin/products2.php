@@ -24,7 +24,7 @@ while ($row= $result->fetch_assoc()) {
     echo "<td>".$row["image"]."</td>";
     echo'<td>
      <a href="#" title="Edit"><img src="resources/images/icons/pencil.png" alt="Edit" /></a>
-     <a href="#" title="Delete"><img src="resources/images/icons/cross.png" alt="Delete" /></a> 
+     <a href="delete.php?id='.$row['product_id'].'" title="Delete"><img src="resources/images/icons/cross.png" alt="Delete" /></a> 
      <a href="#" title="Edit Meta"><img src="resources/images/icons/hammer_screwdriver.png" alt="Edit Meta" /></a>
 </td></tr>';
 }
